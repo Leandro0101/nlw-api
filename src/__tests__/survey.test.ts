@@ -18,4 +18,10 @@ describe('Surveys', () => {
     expect(response.status).toBe(201)
     expect(response.body).toHaveProperty('id')
   })
+
+  test('Should be able get all surveys', async () => {
+    const response = await request(app).get('/surveys')
+
+    expect(response.body.length).toBe(1)
+  })
 })
