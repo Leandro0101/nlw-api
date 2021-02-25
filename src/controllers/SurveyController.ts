@@ -13,6 +13,13 @@ class SurveyController {
 
     return response.status(201).json(survey)
   }
+
+  async show(request: Request, response: Response): Promise<Response> {
+    const surveysRepository = getCustomRepository(SurveysRepository)
+    const surveys = await surveysRepository.find()
+
+    return response.json(surveys)
+  }
 }
 
 export const surveyController = new SurveyController();
