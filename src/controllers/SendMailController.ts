@@ -29,7 +29,13 @@ class SendMailController {
     await surveysUsersRepository.save(surveyUser)
 
     const npsPath = resolve(__dirname, '..', 'views', 'emails', 'npsMail.hbs')
-    const variables = { name: user.name, title: survey.title, description: survey.description}
+    const variables = { 
+      name: user.name, 
+      title: survey.title, 
+      description: survey.description, 
+      user_id: user.id, 
+      link: process.env.URL_MAIL 
+    }
 
     await sendMailService.execute(email, survey.title, variables, npsPath)
 
