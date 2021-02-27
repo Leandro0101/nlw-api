@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { answerController } from './controllers/AnswerController'
 import { sendMailController } from './controllers/SendMailController'
 import { surveyController } from './controllers/SurveyController'
 import { userController } from './controllers/UserController'
@@ -9,3 +10,4 @@ router.post('/users', userController.create)
 router.post('/surveys', surveyController.create)
 router.get('/surveys', surveyController.show)
 router.post('/sendMail', sendMailController.execute)
+router.get('/answers/:value', answerController.execute)
